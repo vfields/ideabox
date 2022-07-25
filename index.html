@@ -2,15 +2,19 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
     <title>Ideabox</title>
   </head>
   <body>
-    <nav>
+    <nav class="sideNav">
       <div>IdeaBox</div>
       <div>Filter Starred Ideas</div>
       <div><button>Show Starred Ideas</button></div>
     </nav>
-    <section>
+    <section class="user-input-section">
       <form>
         <label for="title">Title:</label><br>
         <input type="text" id="title" name="title"><br>
@@ -19,11 +23,12 @@
         <button>Save</button>
       </form>
       <div>
-        <img src="assests/search.svg" alt="a white outline of a microscope">
+        <img src="assets/search.svg" alt="a white outline of a microscope" width=50px height=50px>
         <input type="search" id="search-ideas" name="search-ideas" placeholder="Search ideas">
       </div>
     </section>
     <section>
     </section>
   </body>
+  <script type="text/javascript" src="main.js"></script>
 </html>
