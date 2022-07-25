@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.user-input-section {
+  border: 2px solid red;
+  background-color: #A9AAD2;
+  height: 50%;
+  margin-top: -10px;
+  margin-right: -10px;
+  margin-left: 240px;
+}
+
+.sideNav {
+  background-color: #1F1F3D;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex column;
+}
