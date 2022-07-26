@@ -20,6 +20,7 @@ body {
   background-color: #5356A4;
   color: #E9E9F3;
 }
+
 .sidebar {
   border: 5px solid red;
   flex-grow: 1;
@@ -37,8 +38,6 @@ body {
   background-color: #A9AAD2;
 
 }
-
-
 
 .input-container {
   height: 40vh;
