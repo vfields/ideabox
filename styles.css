@@ -17,6 +17,10 @@ button {
   font-family: 'Open Sans', sans-serif;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 input {
   font-family: 'Open Sans', sans-serif;
 }
@@ -33,6 +37,33 @@ input {
   left: 0;
   display: flex column;
   /* justify-content, align-items */
+}
+
+.ideaboxHeader {
+  color: #E9E9F3;
+  margin-left: 15px;
+}
+
+.filterStarred {
+  border: 1px #353567;
+  border-style: solid none;
+  color: #BFBFDD;
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.showStarredButton {
+  background-color: #5354A4;
+  border: 1px #353567;
+  border-style: solid;
+  color: #E9E9F3;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px 5px 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 /* user-input section */
