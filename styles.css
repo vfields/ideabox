@@ -17,9 +17,9 @@ button {
   font-family: 'Open Sans', sans-serif;
 }
 
-button:hover {
+/* button:hover {
   cursor: pointer;
-}
+} */
 
 input {
   font-family: 'Open Sans', sans-serif;
@@ -119,6 +119,7 @@ label {
   font-weight: bold;
   padding: 10px 152px 5px 152px;
   margin-bottom: 25px;
+  cursor: pointer;
 }
 
 .search-container {
@@ -216,4 +217,9 @@ label {
   color: white;
   font-size: 14px;
   font-weight: bold;
+}
+
+.disabled {
+  background-color: #A9AAD2;
+  font-style: italic;
 }

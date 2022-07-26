@@ -12,6 +12,7 @@ var showStarredButton = document.querySelector(".showStarredButton")
 
 //EVENT LISTENERS:
 saveButton.addEventListener("click", createNewIdea)
+saveButton.addEventListener("keyup", enableSaveButton)
 
 //FUNCTIONS:
 
@@ -36,4 +37,14 @@ function createNewIdea() {
       <div class="ideabox-comment"><p>Comment</p></div>
     </div>
   </div>`
+  userTitleInput.value = ""
+  userBodyInput.value = ""
+}
+
+function enableSaveButton(){
+  if (!userBodyInput && !userTitleInput) {
+    return
+  } else {
+    saveButton.classList.remove("disabled")
+  }
 }
