@@ -76,14 +76,28 @@ if (event.target.id === "delete-btn") {
 
 function favoriteCard() {
   //make it able to toggle for favoriting/unfavoriting
+  var newFav = event.target.closest(".ideabox-container")
+  var newFavStar = newFav.querySelector("img")
+  //if star buttton is clicked:
   if (event.target.id === "star-btn") {
-  for (var i = 0; i < ideas.length; i++) {
-    if (event.target.classList.contains(ideas[i].id)) {
-      ideas[i].star = true
-      var newFav = event.target.closest(".ideabox-container")
-      newFavStar = newFav.querySelector("img")
-      newFavStar.src = "assets/star-active.svg"
+    //and if the star is already active:
+    if (newFavStar.src === "assets/star-active.svg") {
+      //loop thru and find it in the ideas array, then make .star false
+      for (var i = 0; i < ideas.length; i++) {
+        if (event.target.classList.contains(ideas[i].id)) {
+          ideas[i].star = false
+          //and turn the star inactive:
+          newFavStar.src = "assets/star.svg"
+        }
+      }
+      // if this star button isn't already active:
+    } else {
+      for (var i = 0; i < ideas.length; i++) {
+        if (event.target.classList.contains(ideas[i].id)) {
+          ideas[i].star = true
+          newFavStar.src = "assets/star-active.svg"
+        }
+      }
     }
-  }
 }
 }
