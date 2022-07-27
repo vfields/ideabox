@@ -50,6 +50,13 @@ function clearInput() {
 }
 
 // brainstorm for save button disabled;
+/*
+When I look at the “Save” button,
+When either the “Title” or “Body” inputs are empty,
+I should notice that the “Save” button is disabled because
+it is a lighter color and the cursor is not a pointer when
+I hover over it
+*/
 
 var formContainer = document.querySelector(".form-container");
 
@@ -59,5 +66,5 @@ formContainer.addEventListener('input', function() {
 
 formContainer.addEventListener('change', function() {
   console.log('this is a change event');
-  //saveButton.classList.add('saveButtonDisabled');
+  // saveButton.disabled = true;
 })

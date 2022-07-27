@@ -121,7 +121,7 @@ label {
   margin-bottom: 25px;
 }
 
-.saveButtonDisabled {
+.saveButton:disabled {
     background-color: #4c4c61;
     border: 2px solid ##616178;
     color: gray;
@@ -131,7 +131,7 @@ label {
     margin-bottom: 25px;
 }
 
-.saveButtonDisabled:hover {
+.saveButton:disabled:hover {
   cursor: not-allowed;
 }
 
