@@ -9,24 +9,25 @@ var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".showStarredButton")
 var formContainer = document.querySelector(".form-container");
 
-
-//EVENT HANDLERS:
+//EVENT LISTENERS
 
 saveButton.addEventListener('click', addIdea);
 formContainer.addEventListener('input', saveButtonDisplay);
 // saveButton.addEventListener('click', clearInput);
-card.addEventListener('click', deleteCard) //needs to be an anonymous function?
+ideaboxSection.addEventListener('click', deleteCard);
+ideaboxSection.addEventListener('click', favoriteCard);
 
+//EVENT HANDLERS
 
 function addIdea() {
   var newIdea = new Idea(userTitleInput.value, userBodyInput.value);
   ideas.push(newIdea);
 
   ideaboxSection.innerHTML += `
-    <div class="ideabox-container" id="${ideas[ideas.length-1].id}">
+    <div class="ideabox-container" id="${ideas[ideas.length -1 ].id}">
       <div class="ideabox-header">
-        <div class="ideabox-header-image"><img src="assets/star-active.svg" alt="star to favorite"></div>
-        <div class="ideabox-header-image"><img src="assets/delete.svg" alt="x to delete"></div>
+        <div class="ideabox-header-image"><img src="assets/star.svg" id="star-btn" alt="star to favorite" class="${ideas[ideas.length -1 ].id}"></div>
+        <div class="ideabox-header-image"><img src="assets/delete.svg" id="delete-btn" alt="x to delete" class="${ideas[ideas.length -1 ].id}"></div>
       </div>
       <div class="ideabox-body">
         <h3>${ideas[ideas.length - 1].title}</h3>
@@ -62,11 +63,27 @@ function saveButtonDisplay() {
 //   }
 // }
 
-function deleteCard(idea) {
+function deleteCard() {
+if (event.target.id === "delete-btn") {
   for (var i = 0; i < ideas.length; i++) {
-    if (idea === ideas[i]) {
-      ideas.splice(ideas[i], 1)
-      event.target.id.remove()
+    if (event.target.classList.contains(ideas[i].id)) {
+      ideas.splice(i, 1)
+    } var unwantedCard = event.target.closest(".ideabox-container")
+    unwantedCard.remove()
+  }
+}
+}
+
+function favoriteCard() {
+  //make it able to toggle for favoriting/unfavoriting
+  if (event.target.id === "star-btn") {
+  for (var i = 0; i < ideas.length; i++) {
+    if (event.target.classList.contains(ideas[i].id)) {
+      ideas[i].star = true
+      var newFav = event.target.closest(".ideabox-container")
+      newFavStar = newFav.querySelector("img")
+      newFavStar.src = "assets/star-active.svg"
     }
   }
+}
 }
