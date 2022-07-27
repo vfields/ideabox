@@ -9,13 +9,21 @@ var userTitleInput = document.querySelector("#title-input")
 var userBodyInput = document.querySelector("#body-input")
 var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".showStarredButton")
+// var inputForm = document.querySelector("form")
 
 //EVENT LISTENERS:
 saveButton.addEventListener("click", createNewIdea)
-saveButton.addEventListener("keyup", enableSaveButton)
+// saveButton.disabled = true
+// userBodyInput.addEventListener("change", checkInput)
+// userTitleInput.addEventListener("change", checkInput)
 
 //FUNCTIONS:
 
+// function checkInput () {
+//   if (userTitleInput.value !== "" && userBodyInput.value !== "") {
+//     saveButton.disabled = false
+//   }
+// }
 
 function createNewIdea() {
   var newIdea = new Idea(userTitleInput.value, userBodyInput.value)
@@ -39,12 +47,6 @@ function createNewIdea() {
   </div>`
   userTitleInput.value = ""
   userBodyInput.value = ""
-}
-
-function enableSaveButton(){
-  if (!userBodyInput && !userTitleInput) {
-    return
-  } else {
-    saveButton.classList.remove("disabled")
-  }
+  // saveButton.disabled = true
+  
 }
