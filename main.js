@@ -15,7 +15,7 @@ saveButton.addEventListener('click', addIdea);
 formContainer.addEventListener('input', saveButtonDisplay);
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
-// ideaboxSection.addEventListener('click', favoriteCard)
+ideaboxSection.addEventListener('click', favoriteCard)
 
 //EVENT HANDLERS
 
@@ -63,13 +63,27 @@ function saveButtonDisplay() {
 //   }
 // }
 
-function deleteCard(event) {
+function deleteCard() {
 if (event.target.classList.contains("delete-btn")) {
   for (var i = 0; i < ideas.length; i++) {
     var id = parseInt(event.target.closest(".ideabox-container").id)
     if (id === (ideas[i].id)) {
       ideas.splice(i, 1)
-    } event.target.closest(".ideabox-container").remove()
+      }
+    event.target.closest(".ideabox-container").remove()
+    }
   }
 }
+
+function favoriteCard() {
+  if (event.target.classList.contains("star-btn")) {
+  console.log('clicked the star')
+  var id = parseInt(event.target.closest(".ideabox-container").id)
+  for (var i = 0; i < ideas.length; i++) {
+      if (id === (ideas[i].id)) {
+        ideas[i].updateIdea();
+        console.log(ideas[i].star)
+      }
+    }
+  }
 }
