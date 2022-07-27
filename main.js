@@ -18,17 +18,35 @@ function addIdea() {
     var newIdea = new Idea(userTitleInput.value, userBodyInput.value);
     ideas.push(newIdea);
     console.log(ideas);
-    // displayIdeas(); I should see a new idea card with the provided title and body appear on the DOM
+
+    ideaboxSection.innerHTML += `
+    <div class="ideabox-container">
+      <div class="ideabox-header">
+        <div class="ideabox-header-image"><img src="assets/star-active.svg" alt="star to favorite"></div>
+        <div class="ideabox-header-image"><img src="assets/delete.svg" alt="x to delete"></div>
+      </div>
+      <div class="ideabox-body">
+        <h3>${ideas[ideas.length - 1].title}</h3>
+        <p class="ideabox-body-text">${ideas[ideas.length - 1].body}</p>
+      </div>
+      <div class="ideabox-footer">
+        <div class="ideabox-footer-image"><img src="assets/comment.svg"></div>
+        <div class="ideabox-comment"><p>Comment</p></div>
+      </div>
+    </div>
+    `
   }
   else if (userTitleInput.value.length === 0 || userBodyInput.value.length === 0) {
     console.log('else if fired')
-    // alert('You need to fill out the Title and Body sections to save an idea!');
+    alert('You need to fill out the Title and Body sections to save an idea!');
   }
 }
 
 function clearInput() {
-  userTitleInput.value = '';
-  userBodyInput.value = '';
+  if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
+    userTitleInput.value = '';
+    userBodyInput.value = '';
+  }
 }
 
 // brainstorm for save button disabled;
