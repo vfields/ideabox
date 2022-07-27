@@ -121,6 +121,20 @@ label {
   margin-bottom: 25px;
 }
 
+.saveButtonDisabled {
+    background-color: #4c4c61;
+    border: 2px solid ##616178;
+    color: gray;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 152px 5px 152px;
+    margin-bottom: 25px;
+}
+
+.saveButtonDisabled:hover {
+  cursor: not-allowed;
+}
+
 .search-container {
   border: 2px solid #353567;
   width: 350px;

@@ -21,8 +21,7 @@ function addIdea() {
     // displayIdeas(); I should see a new idea card with the provided title and body appear on the DOM
   }
   else if (userTitleInput.value.length === 0 || userBodyInput.value.length === 0) {
-    console.log('else if fired');
-    
+    console.log('else if fired')
     // alert('You need to fill out the Title and Body sections to save an idea!');
   }
 }
@@ -31,3 +30,16 @@ function clearInput() {
   userTitleInput.value = '';
   userBodyInput.value = '';
 }
+
+// brainstorm for save button disabled;
+
+var formContainer = document.querySelector(".form-container");
+
+formContainer.addEventListener('input', function() {
+  console.log('this is an input event');
+})
+
+formContainer.addEventListener('change', function() {
+  console.log('this is a change event');
+  //saveButton.classList.add('saveButtonDisabled');
+})
