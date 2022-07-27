@@ -19,7 +19,7 @@ function addIdea() {
   if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
     var newIdea = new Idea(userTitleInput.value, userBodyInput.value);
     ideas.push(newIdea);
-    console.log(ideas);
+    // console.log(ideas);
 
     ideaboxSection.innerHTML += `
     <div class="ideabox-container">
@@ -38,10 +38,10 @@ function addIdea() {
     </div>
     `
   }
-  else if (userTitleInput.value.length === 0 || userBodyInput.value.length === 0) {
-    console.log('else if fired')
-    alert('You need to fill out the Title and Body sections to save an idea!');
-  }
+  // else if (userTitleInput.value.length === 0 || userBodyInput.value.length === 0) {
+  //   console.log('else if fired')
+  //   alert('You need to fill out the Title and Body sections to save an idea!');
+  // }
 }
 
 function clearInput() {
@@ -53,7 +53,7 @@ function clearInput() {
 }
 
 function saveButtonDisplay() {
-  console.log('this is an input event');
+  // console.log('this is an input event');
   if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
     saveButton.disabled = false;
   }
