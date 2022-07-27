@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+
 }
 
 body {
@@ -16,7 +17,15 @@ button:hover {
   cursor: pointer;
 }
 
-input {
+.delete-btn:hover {
+  cursor: pointer;
+}
+
+.star-btn:hover {
+  cursor: pointer;
+}
+
+input, textarea {
   font-family: 'Open Sans', sans-serif;
 }
 
