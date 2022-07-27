@@ -15,6 +15,7 @@ saveButton.addEventListener('click', addIdea);
 formContainer.addEventListener('input', saveButtonDisplay);
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
+// ideaboxSection.addEventListener('click', favoriteCard)
 
 //EVENT HANDLERS
 
@@ -25,8 +26,8 @@ function addIdea() {
   ideaboxSection.innerHTML += `
     <div class="ideabox-container" id="${ideas[ideas.length -1 ].id}">
       <div class="ideabox-header">
-        <div class="ideabox-header-image"><img src="assets/star.svg" alt="star to favorite"></div>
-        <div class="ideabox-header-image"><img src="assets/delete.svg" alt="x to delete"></div>
+        <div class="ideabox-header-image"><img class="star-btn" src="assets/star.svg" alt="star to favorite"></div>
+        <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
       </div>
       <div class="ideabox-body">
         <h3>${ideas[ideas.length - 1].title}</h3>
@@ -62,12 +63,13 @@ function saveButtonDisplay() {
 //   }
 // }
 
-function deleteCard(idea) {
+function deleteCard(event) {
+if (event.target.classList.contains("delete-btn")) {
   for (var i = 0; i < ideas.length; i++) {
-    if (idea === ideas[i]) {
+    var id = parseInt(event.target.closest(".ideabox-container").id)
+    if (id === (ideas[i].id)) {
       ideas.splice(i, 1)
-      //ideaboxSection.classList.add(hidden)
-      ideaboxSection.innerHtml.remove()
-    }
+    } event.target.closest(".ideabox-container").remove()
   }
+}
 }
