@@ -7,11 +7,13 @@ var userTitleInput = document.querySelector("#title-input")
 var userBodyInput = document.querySelector("#body-input")
 var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".showStarredButton")
+var formContainer = document.querySelector(".form-container");
 
 //FUNCTIONS:
 
 saveButton.addEventListener('click', addIdea);
 saveButton.addEventListener('click', clearInput);
+formContainer.addEventListener('input', saveButtonDisplay);
 
 function addIdea() {
   if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
@@ -43,28 +45,19 @@ function addIdea() {
 }
 
 function clearInput() {
+  saveButton.disabled = true;
   if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
     userTitleInput.value = '';
     userBodyInput.value = '';
   }
 }
 
-// brainstorm for save button disabled;
-/*
-When I look at the “Save” button,
-When either the “Title” or “Body” inputs are empty,
-I should notice that the “Save” button is disabled because
-it is a lighter color and the cursor is not a pointer when
-I hover over it
-*/
-
-var formContainer = document.querySelector(".form-container");
-
-formContainer.addEventListener('input', function() {
+function saveButtonDisplay() {
   console.log('this is an input event');
-})
-
-formContainer.addEventListener('change', function() {
-  console.log('this is a change event');
-  // saveButton.disabled = true;
-})
+  if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
+    saveButton.disabled = false;
+  }
+  // else {
+  //   saveButton.disabled = true; // I think this is redundant, since we reset the boolean in the clearInput function
+  // }
+}
