@@ -77,13 +77,19 @@ if (event.target.classList.contains("delete-btn")) {
 
 function favoriteCard() {
   if (event.target.classList.contains("star-btn")) {
-  console.log('clicked the star')
-  var id = parseInt(event.target.closest(".ideabox-container").id)
-  for (var i = 0; i < ideas.length; i++) {
-      if (id === (ideas[i].id)) {
-        ideas[i].updateIdea();
-        console.log(ideas[i].star)
+    var starBtnSrc = event.target.src;
+    var id = parseInt(event.target.closest(".ideabox-container").id);
+      for (var i = 0; i < ideas.length; i++) {
+        if (id === (ideas[i].id)) {
+          ideas[i].updateIdea();
+          console.log(ideas[i].star)
+      }
+      if (starBtnSrc === "assets/star.svg") {
+        starBtnSrc = "assets/star-active.svg";
+        console.log(starBtnSrc);
       }
     }
   }
 }
+
+//event.target.src = "assets/star-active.svg"
