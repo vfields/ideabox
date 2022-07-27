@@ -31,7 +31,7 @@ function createNewIdea() {
   var newIdeaElement = document.createElement("div")
   ideaboxSection.appendChild(newIdeaElement)
   newIdeaElement.classList.add("ideabox-container")
-  newIdeaElement.innerHTML = `<div class="ideabox-container">
+  newIdeaElement.innerHTML += `<div class="ideabox-container">
     <div class="ideabox-header">
       <div class="ideabox-header-image"><img src="assets/star-active.svg" alt="star to favorite"></div>
       <div class="ideabox-header-image"><img src="assets/delete.svg" alt="x to delete"></div>
@@ -48,5 +48,5 @@ function createNewIdea() {
   userTitleInput.value = ""
   userBodyInput.value = ""
   // saveButton.disabled = true
-  
+
 }
