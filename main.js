@@ -9,20 +9,23 @@ var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".showStarredButton")
 var formContainer = document.querySelector(".form-container");
 
-//FUNCTIONS:
+//EVENT LISTENERS
 
 saveButton.addEventListener('click', addIdea);
 formContainer.addEventListener('input', saveButtonDisplay);
 // saveButton.addEventListener('click', clearInput);
+ideaboxSection.addEventListener('click', deleteCard)
+
+//EVENT HANDLERS
 
 function addIdea() {
   var newIdea = new Idea(userTitleInput.value, userBodyInput.value);
   ideas.push(newIdea);
 
   ideaboxSection.innerHTML += `
-    <div class="ideabox-container">
+    <div class="ideabox-container" id="${ideas[ideas.length -1 ].id}">
       <div class="ideabox-header">
-        <div class="ideabox-header-image"><img src="assets/star-active.svg" alt="star to favorite"></div>
+        <div class="ideabox-header-image"><img src="assets/star.svg" alt="star to favorite"></div>
         <div class="ideabox-header-image"><img src="assets/delete.svg" alt="x to delete"></div>
       </div>
       <div class="ideabox-body">
@@ -58,3 +61,13 @@ function saveButtonDisplay() {
 //     userBodyInput.value = '';
 //   }
 // }
+
+function deleteCard(idea) {
+  for (var i = 0; i < ideas.length; i++) {
+    if (idea === ideas[i]) {
+      ideas.splice(i, 1)
+      //ideaboxSection.classList.add(hidden)
+      ideaboxSection.innerHtml.remove()
+    }
+  }
+}
