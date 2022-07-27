@@ -2,15 +2,10 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  width: 100%;
-}
-
 body {
   font-family: 'Open Sans', sans-serif;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 button {
@@ -29,8 +24,8 @@ input {
 
 .sideNav {
   background-color: #1F1F3D;
-  height: 100%;
-  width: 250px;
+  height: 100vh;
+  width: 21vw;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -69,8 +64,8 @@ input {
 .user-input-section {
   /* border: 4px solid red; */
   background-color: #A9AAD2;
-  height: 350px;
-  width: auto;
+  height: 55vh;
+  width: 79vw;
   margin-top: -10px;
   margin-right: -10px;
   margin-left: 240px;
@@ -121,6 +116,20 @@ label {
   margin-bottom: 25px;
 }
 
+.saveButton:disabled {
+    background-color: #4c4c61;
+    border: 2px solid #616178;
+    color: gray;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 152px 5px 152px;
+    margin-bottom: 25px;
+}
+
+.saveButton:disabled:hover {
+  cursor: not-allowed;
+}
+
 .search-container {
   border: 2px solid #353567;
   width: 350px;
@@ -151,7 +160,8 @@ label {
 .ideabox-section {
   /* border: 4px solid green; */
   background-color: #EAEAF4;
-  height: 600px;
+  height: 100vh;
+  width: 79vw;
   margin-right: -10px;
   margin-left: 240px;
   padding-top: 15px;
@@ -159,6 +169,7 @@ label {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  overflow: scroll;
   /* grid-auto-rows: minmax(100px, auto); */
 }
 
