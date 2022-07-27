@@ -83,6 +83,7 @@ function favoriteCard() {
     //and if the star is already active:
     if (newFavStar.src === "assets/star-active.svg") {
       //loop thru and find it in the ideas array, then make .star false
+      console.log("Hi")
       for (var i = 0; i < ideas.length; i++) {
         if (event.target.classList.contains(ideas[i].id)) {
           ideas[i].star = false
@@ -96,6 +97,7 @@ function favoriteCard() {
         if (event.target.classList.contains(ideas[i].id)) {
           ideas[i].star = true
           newFavStar.src = "assets/star-active.svg"
+          newFavStar.
         }
       }
     }
