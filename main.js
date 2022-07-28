@@ -13,11 +13,50 @@ var formContainer = document.querySelector(".form-container");
 
 saveButton.addEventListener('click', addIdea);
 formContainer.addEventListener('input', saveButtonDisplay);
-// saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
-// ideaboxSection.addEventListener('click', favoriteCard)
+ideaboxSection.addEventListener('click', favoriteCard)
+// showStarredButton.addEventListener('click', showStarredIdeas)
+showStarredButton.addEventListener('click', toggleShowStarredBtn)
 
 //EVENT HANDLERS
+
+function toggleShowStarredBtn() {
+  if (showStarredButton.innerText === "Show Starred Ideas") {
+    showStarredButton.innerText = "Show All Ideas"
+  } else {
+    showStarredButton.innerText = "Show Starred Ideas"
+  }
+}
+
+
+// function showStarredIdeas() {
+//   var favoriteCards = []
+//   for (var i = 0; i < ideas.length; i++) {
+//     if (ideas[i].star) {
+//       favoriteCards.push(ideas[i])
+//
+//     }
+//   }
+// //loop thru array of ideas to find fav'd ones
+
+// //if a favorite, add it to a new array
+// //loop thru all ideabox-containers
+// //if ideabox-container id is not in new array,
+// // add .hidden to classList
+// }
+
+function favoriteCard() {
+  if (event.target.classList.contains("star-btn")) {
+    var favCardId = parseInt(event.target.closest(".ideabox-container").id)
+    var favCardStar = event.target
+
+    for (var i = 0; i < ideas.length; i++) {
+      if (ideas[i].id === favCardId) {
+        ideas[i].updateIdea(favCardStar)
+      }
+    }
+  }
+}
 
 function addIdea() {
   var newIdea = new Idea(userTitleInput.value, userBodyInput.value);

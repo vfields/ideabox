@@ -17,6 +17,11 @@ button:hover {
   cursor: pointer;
 }
 
+.hidden {
+  background-color: red;
+  display: none;
+}
+
 .delete-btn:hover {
   cursor: pointer;
 }

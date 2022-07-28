@@ -6,7 +6,13 @@ class Idea {
     this.star = false;
   }
 
-  updateIdea() {
-    this.star = true
+  updateIdea(clickedCardStar) {
+    if (this.star) {
+      this.star = false
+      clickedCardStar.src="assets/star.svg"
+    } else {
+      this.star = true
+      clickedCardStar.src="assets/star-active.svg"
+    }
   }
 }
