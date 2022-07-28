@@ -17,31 +17,10 @@ formContainer.addEventListener('input', saveButtonDisplay)
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
 ideaboxSection.addEventListener('click', favoriteCard)
+searchBar.addEventListener('input', filterSearch);
 
 // currently working on:
 showStarredButton.addEventListener('click', displayFavorites)
-searchBar.addEventListener('keyup', function(event) {
-  var userSearch = searchBar.value.toLowerCase();
-  var currentIdeas = Array.from(document.querySelectorAll(".ideabox-body"));
-  console.log(currentIdeas);
-  for (var i = 0; i < currentIdeas.length; i++) {
-    var innerText = currentIdeas[i].innerText.toLowerCase();
-    // console.log(innerText);
-    if (innerText.indexOf(userSearch) === -1) {
-      console.log("This does not match, no");
-      console.log()
-      // then, add a hidden class to the closest container div
-    }
-  }
-});
-
-/*
-currentIdeas[0].children[1].innerText =
-title and body
-
-can also add toLowerCase() method to the
-end and it's okay
-*/
 
 //EVENT HANDLERS
 
@@ -116,6 +95,23 @@ function favoriteCard() {
           // console.log(ideas[i].star)
         }
       }
+  }
+}
+
+function filterSearch() {
+  var userSearch = searchBar.value.toLowerCase();
+  var currentIdeas = Array.from(document.querySelectorAll(".ideabox-body"));
+  // console.log(currentIdeas);
+  for (var i = 0; i < currentIdeas.length; i++) {
+    var innerText = currentIdeas[i].innerText.toLowerCase();
+    if (innerText.indexOf(userSearch) === -1) {
+      // console.log("This does not match, no");
+      currentIdeas[i].closest('.ideabox-container').classList.add("hidden");
+    }
+    else if (innerText.indexOf(userSearch) > -1) {
+      // console.log("This does match, yes");
+      currentIdeas[i].closest('.ideabox-container').classList.remove("hidden");
+    }
   }
 }
 
