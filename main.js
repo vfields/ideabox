@@ -1,5 +1,6 @@
 //GLOBAL VARIABLE:
 var ideas = []
+var favoriteIdeas = []
 
 //QUERY SELECTORS:
 var saveButton = document.querySelector(".saveButton")
@@ -96,20 +97,25 @@ function favoriteCard() {
 
 function displayFavorites() {
   console.log('showed star clicked');
-  // ideaboxSection.innerHTML = ``;
-
-  for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].star === false) {
-      console.log(ideas[i]);
-      // then remove those elements from view;
-      // event.target.closest(".ideabox-container").remove()
-    }
-  }
+  ideaboxSection.innerHTML = ``;
+  //
+  // for (var i = 0; i < ideas.length; i++) {
+  //   if (ideas[i].star === false) {
+  //     console.log(ideas[i]);
+  //     // then remove those elements from view;
+  //     // event.target.closest(".ideabox-container").remove()
+  //   }
+  // }
 
   if (event.target.innerHTML === 'Show Starred Ideas') {
     event.target.innerHTML = 'Show All Ideas';
+    // display the favorites;
+    // ideaboxSection.innerHTML +=
+
   }
   else if(event.target.innerHTML === 'Show All Ideas') {
     event.target.innerHTML = 'Show Starred Ideas';
+    // display the whole array;
+    // ideaboxSection.innerHTML += 
   }
 }
