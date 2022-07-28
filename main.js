@@ -97,25 +97,25 @@ function favoriteCard(event) {
           // console.log(ideas[i].star)
         }
       }
+  }
+}
+
+function displayFavorites(event) {
+  console.log('showed star clicked');
+  // ideaboxSection.innerHTML = ``;
+
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].star === false) {
+      console.log(ideas[i]);
+      // then remove those elements from view;
+      // event.target.closest(".ideabox-container").remove()
     }
   }
 
-  function displayFavorites(event) {
-    console.log('showed star clicked');
-    // ideaboxSection.innerHTML = ``;
-
-    for (var i = 0; i < ideas.length; i++) {
-      if (ideas[i].star === false) {
-        console.log(ideas[i]);
-        // then remove those elements from view;
-        // event.target.closest(".ideabox-container").remove()
-      }
-    }
-
-    if (event.target.innerHTML === 'Show Starred Ideas') {
-      event.target.innerHTML = 'Show All Ideas';
-    }
-    else if(event.target.innerHTML === 'Show All Ideas') {
-      event.target.innerHTML = 'Show Starred Ideas';
-    }
+  if (event.target.innerHTML === 'Show Starred Ideas') {
+    event.target.innerHTML = 'Show All Ideas';
   }
+  else if(event.target.innerHTML === 'Show All Ideas') {
+    event.target.innerHTML = 'Show Starred Ideas';
+  }
+}
