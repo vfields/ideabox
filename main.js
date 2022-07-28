@@ -7,16 +7,22 @@ var userTitleInput = document.querySelector("#title-input")
 var userBodyInput = document.querySelector("#body-input")
 var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".showStarredButton")
-var formContainer = document.querySelector(".form-container");
+var formContainer = document.querySelector(".form-container")
 
 //EVENT LISTENERS
 
-saveButton.addEventListener('click', addIdea);
-formContainer.addEventListener('input', saveButtonDisplay);
+saveButton.addEventListener('click', addIdea)
+formContainer.addEventListener('input', saveButtonDisplay)
 // saveButton.addEventListener('click', clearInput);
-ideaboxSection.addEventListener('click', deleteCard)
-ideaboxSection.addEventListener('click', favoriteCard)
-showStarredButton.addEventListener('click', displayFavorites)
+ideaboxSection.addEventListener('click', function(event) {
+  deleteCard(event);
+})
+ideaboxSection.addEventListener('click', function(event) {
+  favoriteCard(event);
+})
+showStarredButton.addEventListener('click', function(event) {
+  displayFavorites(event);
+})
 
 //EVENT HANDLERS
 
@@ -64,7 +70,7 @@ function saveButtonDisplay() {
 //   }
 // }
 
-function deleteCard() {
+function deleteCard(event) {
   if (event.target.classList.contains("delete-btn")) {
     for (var i = 0; i < ideas.length; i++) {
       var id = parseInt(event.target.closest(".ideabox-container").id)
@@ -76,7 +82,7 @@ function deleteCard() {
     }
   }
 
-function favoriteCard() {
+function favoriteCard(event) {
   if (event.target.classList.contains("star-btn")) {
     if (event.target.getAttribute('src') === "assets/star.svg") {
       event.target.src = "assets/star-active.svg";
@@ -94,7 +100,7 @@ function favoriteCard() {
     }
   }
 
-  function displayFavorites() {
+  function displayFavorites(event) {
     console.log('showed star clicked');
     // ideaboxSection.innerHTML = ``;
 
