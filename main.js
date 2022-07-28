@@ -16,6 +16,7 @@ formContainer.addEventListener('input', saveButtonDisplay);
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
 ideaboxSection.addEventListener('click', favoriteCard)
+showStarredButton.addEventListener('click', displayFavorites)
 
 //EVENT HANDLERS
 
@@ -77,18 +78,38 @@ function deleteCard() {
 
 function favoriteCard() {
   if (event.target.classList.contains("star-btn")) {
+    if (event.target.getAttribute('src') === "assets/star.svg") {
+      event.target.src = "assets/star-active.svg";
+    }
+    else if (event.target.getAttribute('src') === "assets/star-active.svg") {
+      event.target.src = "assets/star.svg";
+    }
     var id = parseInt(event.target.closest(".ideabox-container").id);
       for (var i = 0; i < ideas.length; i++) {
         if (id === (ideas[i].id)) {
           ideas[i].updateIdea();
           // console.log(ideas[i].star)
         }
-        if (event.target.getAttribute('src') === "assets/star.svg") {
-          event.target.src = "assets/star-active.svg";
-        }
-        else if (event.target.getAttribute('src') === "assets/star-active.svg") {
-          event.target.src = "assets/star.svg";
-        }
       }
+    }
+  }
+
+  function displayFavorites() {
+    console.log('showed star clicked');
+    // ideaboxSection.innerHTML = ``;
+
+    for (var i = 0; i < ideas.length; i++) {
+      if (ideas[i].star === false) {
+        console.log(ideas[i]);
+        // then remove those elements from view;
+        // event.target.closest(".ideabox-container").remove()
+      }
+    }
+
+    if (event.target.innerHTML === 'Show Starred Ideas') {
+      event.target.innerHTML = 'Show All Ideas';
+    }
+    else if(event.target.innerHTML === 'Show All Ideas') {
+      event.target.innerHTML = 'Show Starred Ideas';
     }
   }
