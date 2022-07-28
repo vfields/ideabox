@@ -8,6 +8,7 @@ var userBodyInput = document.querySelector("#body-input")
 var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".showStarredButton")
 var formContainer = document.querySelector(".form-container")
+var searchBar = document.querySelector("#search-ideas");
 
 //EVENT LISTENERS
 
@@ -16,7 +17,31 @@ formContainer.addEventListener('input', saveButtonDisplay)
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
 ideaboxSection.addEventListener('click', favoriteCard)
+
+// currently working on:
 showStarredButton.addEventListener('click', displayFavorites)
+searchBar.addEventListener('keyup', function(event) {
+  var userSearch = searchBar.value.toLowerCase();
+  var currentIdeas = Array.from(document.querySelectorAll(".ideabox-body"));
+  console.log(currentIdeas);
+  for (var i = 0; i < currentIdeas.length; i++) {
+    var innerText = currentIdeas[i].innerText.toLowerCase();
+    // console.log(innerText);
+    if (innerText.indexOf(userSearch) === -1) {
+      console.log("This does not match, no");
+      console.log()
+      // then, add a hidden class to the closest container div
+    }
+  }
+});
+
+/*
+currentIdeas[0].children[1].innerText =
+title and body
+
+can also add toLowerCase() method to the
+end and it's okay
+*/
 
 //EVENT HANDLERS
 
@@ -93,6 +118,8 @@ function favoriteCard() {
       }
   }
 }
+
+// currently working on:
 
 function displayFavorites() {
   console.log('showed star clicked');
