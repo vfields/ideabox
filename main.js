@@ -64,32 +64,31 @@ function saveButtonDisplay() {
 // }
 
 function deleteCard() {
-if (event.target.classList.contains("delete-btn")) {
-  for (var i = 0; i < ideas.length; i++) {
-    var id = parseInt(event.target.closest(".ideabox-container").id)
-    if (id === (ideas[i].id)) {
-      ideas.splice(i, 1)
+  if (event.target.classList.contains("delete-btn")) {
+    for (var i = 0; i < ideas.length; i++) {
+      var id = parseInt(event.target.closest(".ideabox-container").id)
+      if (id === (ideas[i].id)) {
+        ideas.splice(i, 1)
+        }
+      event.target.closest(".ideabox-container").remove()
       }
-    event.target.closest(".ideabox-container").remove()
     }
   }
-}
 
 function favoriteCard() {
   if (event.target.classList.contains("star-btn")) {
-    var starBtnSrc = event.target.src;
     var id = parseInt(event.target.closest(".ideabox-container").id);
       for (var i = 0; i < ideas.length; i++) {
         if (id === (ideas[i].id)) {
           ideas[i].updateIdea();
-          console.log(ideas[i].star)
-      }
-      if (starBtnSrc === "assets/star.svg") {
-        starBtnSrc = "assets/star-active.svg";
-        console.log(starBtnSrc);
+          // console.log(ideas[i].star)
+        }
+        if (event.target.getAttribute('src') === "assets/star.svg") {
+          event.target.src = "assets/star-active.svg";
+        }
+        else if (event.target.getAttribute('src') === "assets/star-active.svg") {
+          event.target.src = "assets/star.svg";
+        }
       }
     }
   }
-}
-
-//event.target.src = "assets/star-active.svg"
