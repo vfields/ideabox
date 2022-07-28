@@ -14,15 +14,9 @@ var formContainer = document.querySelector(".form-container")
 saveButton.addEventListener('click', addIdea)
 formContainer.addEventListener('input', saveButtonDisplay)
 // saveButton.addEventListener('click', clearInput);
-ideaboxSection.addEventListener('click', function(event) {
-  deleteCard(event);
-})
-ideaboxSection.addEventListener('click', function(event) {
-  favoriteCard(event);
-})
-showStarredButton.addEventListener('click', function(event) {
-  displayFavorites(event);
-})
+ideaboxSection.addEventListener('click', deleteCard)
+ideaboxSection.addEventListener('click', favoriteCard)
+showStarredButton.addEventListener('click', displayFavorites)
 
 //EVENT HANDLERS
 
@@ -70,7 +64,7 @@ function saveButtonDisplay() {
 //   }
 // }
 
-function deleteCard(event) {
+function deleteCard() {
   if (event.target.classList.contains("delete-btn")) {
     for (var i = 0; i < ideas.length; i++) {
       var id = parseInt(event.target.closest(".ideabox-container").id)
@@ -82,7 +76,7 @@ function deleteCard(event) {
     }
   }
 
-function favoriteCard(event) {
+function favoriteCard() {
   if (event.target.classList.contains("star-btn")) {
     if (event.target.getAttribute('src') === "assets/star.svg") {
       event.target.src = "assets/star-active.svg";
@@ -100,7 +94,7 @@ function favoriteCard(event) {
   }
 }
 
-function displayFavorites(event) {
+function displayFavorites() {
   console.log('showed star clicked');
   // ideaboxSection.innerHTML = ``;
 
