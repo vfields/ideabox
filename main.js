@@ -17,10 +17,8 @@ formContainer.addEventListener('input', saveButtonDisplay)
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
 ideaboxSection.addEventListener('click', favoriteCard)
-searchBar.addEventListener('input', filterSearch);
-
-// currently working on:
 showStarredButton.addEventListener('click', displayFavorites)
+searchBar.addEventListener('input', filterSearch)
 
 //EVENT HANDLERS
 
@@ -29,7 +27,7 @@ function addIdea() {
   ideas.push(newIdea);
 
   ideaboxSection.innerHTML += `
-    <div class="ideabox-container" id="${ideas[ideas.length -1 ].id}">
+    <div class="ideabox-container" id="${ideas[ideas.length - 1].id}">
       <div class="ideabox-header">
         <div class="ideabox-header-image"><img class="star-btn" src="assets/star.svg" alt="star to favorite"></div>
         <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
@@ -84,9 +82,13 @@ function favoriteCard() {
   if (event.target.classList.contains("star-btn")) {
     if (event.target.getAttribute('src') === "assets/star.svg") {
       event.target.src = "assets/star-active.svg";
+      event.target.closest(".ideabox-container").classList.add("favorite")
+      // console.log(event.target.closest(".ideabox-container"))
     }
     else if (event.target.getAttribute('src') === "assets/star-active.svg") {
       event.target.src = "assets/star.svg";
+      event.target.closest(".ideabox-container").classList.remove("favorite")
+      // console.log(event.target.closest(".ideabox-container"))
     }
     var id = parseInt(event.target.closest(".ideabox-container").id);
       for (var i = 0; i < ideas.length; i++) {
@@ -95,6 +97,29 @@ function favoriteCard() {
           // console.log(ideas[i].star)
         }
       }
+  }
+}
+
+function displayFavorites() {
+  // console.log('showed star clicked');
+  var currentIdeaCards = Array.from(document.querySelectorAll(".ideabox-container"));
+  // console.log(currentIdeaCards[0]);
+
+  if (event.target.innerHTML === 'Show Starred Ideas') {
+    event.target.innerHTML = 'Show All Ideas';
+    for (var i = 0; i < currentIdeaCards.length; i++) {
+      if (!currentIdeaCards[i].classList.contains("favorite"))  {
+        currentIdeaCards[i].closest('.ideabox-container').classList.add("hidden");
+      }
+    }
+  }
+  else if(event.target.innerHTML === 'Show All Ideas') {
+    event.target.innerHTML = 'Show Starred Ideas';
+    for (var i = 0; i < currentIdeaCards.length; i++) {
+      if (currentIdeaCards[i].classList.contains("ideabox-container"))  {
+        currentIdeaCards[i].closest('.ideabox-container').classList.remove("hidden");
+      }
+    }
   }
 }
 
@@ -112,27 +137,5 @@ function filterSearch() {
       // console.log("This does match, yes");
       currentIdeas[i].closest('.ideabox-container').classList.remove("hidden");
     }
-  }
-}
-
-// currently working on:
-
-function displayFavorites() {
-  console.log('showed star clicked');
-  // ideaboxSection.innerHTML = ``;
-
-  for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].star === false) {
-      console.log(ideas[i]);
-      // then remove those elements from view;
-      // event.target.closest(".ideabox-container").remove()
-    }
-  }
-
-  if (event.target.innerHTML === 'Show Starred Ideas') {
-    event.target.innerHTML = 'Show All Ideas';
-  }
-  else if(event.target.innerHTML === 'Show All Ideas') {
-    event.target.innerHTML = 'Show Starred Ideas';
   }
 }
