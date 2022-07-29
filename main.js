@@ -139,3 +139,33 @@ function filterSearch() {
     }
   }
 }
+
+// function filterSearch() {
+//   var userSearch = searchBar.value.toLowerCase();
+//   var searchList = [];
+//   for (var i = 0; i < ideas.length; i++) {
+//     var lowerCaseTitle = ideas[i].title.toLowerCase();
+//     var lowerCaseBody = ideas[i].body.toLowerCase();
+//     if (lowerCaseTitle.indexOf(userSearch) > -1 || lowerCaseBody.indexOf(userSearch) > -1) {
+//       searchList.push(ideas[i]);
+//     }
+//     }
+//     // section.innerHTML = '';
+//     // section.innerHTML += searchList, hide the others; (a loop to render through an array)
+//     // want to display searchList, and hide the other DOM elements
+//   }
+// }
+
+/************/
+
+// grab the inner text of the different ideas currently in the ideas
+// data set array, and force them to lower case
+// loop through the ideas array, grabbing ideas[i].title & ideas[i].body
+
+// affect the current display/DOM (we'd either have to use section.innerHTML = '';
+// or we could use one of the other functions we've created)
+// responding to input, the loop keep running, the event would work
+// does the user input match the title/body
+// var title = ideas[i].title & var body = ideas[i].body (?)
+// still have an array with objects, but only objects that match the
+// search criteria
