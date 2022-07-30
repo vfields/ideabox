@@ -21,94 +21,30 @@ formContainer.addEventListener('input', function() {
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
 ideaboxSection.addEventListener('click', updateStarDisplay)
-showStarredButton.addEventListener('click', displayAllOrFavorites)
+showStarredButton.addEventListener('click', displayFavorites)
 searchBar.addEventListener('input', filterSearch)
 
 //EVENT HANDLERS
+function displayFavorites() {
+  var currentIdeaCards = Array.from(document.querySelectorAll(".ideabox-container"));
 
-// function addIdea() {
-//   var newIdea = new Idea(userTitleInput.value, userBodyInput.value);
-//   ideas.push(newIdea);
-//
-//   ideaboxSection.innerHTML += `
-//     <div class="ideabox-container" id="${ideas[ideas.length - 1].id}">
-//       <div class="ideabox-header">
-//         <div class="ideabox-header-image"><img class="star-btn" src="assets/star.svg" alt="star to favorite"></div>
-//         <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
-//       </div>
-//       <div class="ideabox-body">
-//         <h3>${ideas[ideas.length - 1].title}</h3>
-//         <p class="ideabox-body-text">${ideas[ideas.length - 1].body}</p>
-//       </div>
-//       <div class="ideabox-footer">
-//         <div class="ideabox-footer-image"><img src="assets/comment.svg"></div>
-//         <div class="ideabox-comment"><p>Comment</p></div>
-//       </div>
-//     </div>
-//     `
-//   saveButton.disabled = true;
-//   if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
-//     userTitleInput.value = '';
-//     userBodyInput.value = '';
-//   }
-// }
-
-
-
-// function clearInput() {
-//   saveButton.disabled = true;
-//   if (userTitleInput.value.length > 0 && userBodyInput.value.length > 0) {
-//     userTitleInput.value = '';
-//     userBodyInput.value = '';
-//   }
-// }
-
-
-
-// function favoriteCard() {
-//   if (event.target.classList.contains("star-btn")) {
-//     if (event.target.getAttribute('src') === "assets/star.svg") {
-//       event.target.src = "assets/star-active.svg";
-//       event.target.closest(".ideabox-container").classList.add("favorite")
-//       // console.log(event.target.closest(".ideabox-container"))
-//     }
-//     else if (event.target.getAttribute('src') === "assets/star-active.svg") {
-//       event.target.src = "assets/star.svg";
-//       event.target.closest(".ideabox-container").classList.remove("favorite")
-//       // console.log(event.target.closest(".ideabox-container"))
-//     }
-//     var id = parseInt(event.target.closest(".ideabox-container").id);
-//       for (var i = 0; i < ideas.length; i++) {
-//         if (id === (ideas[i].id)) {
-//           ideas[i].updateIdea();
-//           // console.log(ideas[i].star)
-//         }
-//       }
-//   }
-// }
-
-// function displayFavorites() {
-//   // console.log('showed star clicked');
-//   var currentIdeaCards = Array.from(document.querySelectorAll(".ideabox-container"));
-//   // console.log(currentIdeaCards[0]);
-//
-//   if (event.target.innerHTML === 'Show Starred Ideas') {
-//     event.target.innerHTML = 'Show All Ideas';
-//     for (var i = 0; i < currentIdeaCards.length; i++) {
-//       if (!currentIdeaCards[i].classList.contains("favorite"))  {
-//         currentIdeaCards[i].closest('.ideabox-container').classList.add("hidden");
-//       }
-//     }
-//   }
-//   else if(event.target.innerHTML === 'Show All Ideas') {
-//     event.target.innerHTML = 'Show Starred Ideas';
-//     for (var i = 0; i < currentIdeaCards.length; i++) {
-//       if (currentIdeaCards[i].classList.contains("ideabox-container"))  {
-//         currentIdeaCards[i].closest('.ideabox-container').classList.remove("hidden");
-//       }
-//     }
-//   }
-// }
+  if (event.target.innerHTML === 'Show Starred Ideas') {
+    event.target.innerHTML = 'Show All Ideas';
+    for (var i = 0; i < currentIdeaCards.length; i++) {
+      if (!currentIdeaCards[i].classList.contains("favorite"))  {
+        currentIdeaCards[i].closest('.ideabox-container').classList.add("hidden");
+      }
+    }
+  }
+  else if(event.target.innerHTML === 'Show All Ideas') {
+    event.target.innerHTML = 'Show Starred Ideas';
+    for (var i = 0; i < currentIdeaCards.length; i++) {
+      if (currentIdeaCards[i].classList.contains("ideabox-container"))  {
+        currentIdeaCards[i].closest('.ideabox-container').classList.remove("hidden");
+      }
+    }
+  }
+}
 
 function filterSearch() {
   var userSearch = searchBar.value.toLowerCase();
@@ -126,62 +62,13 @@ function filterSearch() {
     }
   }
 }
-
-// function filterSearch() {
-//   var userSearch = searchBar.value.toLowerCase();
-//   var searchList = [];
-//   for (var i = 0; i < ideas.length; i++) {
-//     var lowerCaseTitle = ideas[i].title.toLowerCase();
-//     var lowerCaseBody = ideas[i].body.toLowerCase();
-//     if (lowerCaseTitle.indexOf(userSearch) > -1 || lowerCaseBody.indexOf(userSearch) > -1) {
-//       searchList.push(ideas[i]);
-//     }
-//     }
-//     // section.innerHTML = '';
-//     // section.innerHTML += searchList, hide the others; (a loop to render through an array)
-//     // want to display searchList, and hide the other DOM elements
-//   }
-// }
-
-/************/
-
-// grab the inner text of the different ideas currently in the ideas
-// data set array, and force them to lower case
-// loop through the ideas array, grabbing ideas[i].title & ideas[i].body
-
-// affect the current display/DOM (we'd either have to use section.innerHTML = '';
-// or we could use one of the other functions we've created)
-// responding to input, the loop keep running, the event would work
-// does the user input match the title/body
-// var title = ideas[i].title & var body = ideas[i].body (?)
-// still have an array with objects, but only objects that match the
-// search criteria
-
-
-//REFACTOR AREA:
-
-function whichStar() {
-  var starImg = event.target.closest(".star-btn");
-  for (var i = 0; i < ideas.length; i++) {
-    console.log(ideas[i].star)
-    if (ideas[i].star) {
-      starImg.src = "assets/star-active.svg"
-      console.log("I found favorited ideas!")
-    } else if (!ideas[i].star) {
-      starImg.src = "assets/star.svg"
-      console.log("I found non-favorited ideas")
-    }
-  }
-  return starImg
-}
-
 function render(arrayOfIdeas) {
   ideaboxSection.innerHTML = ""
   for (var i = 0; i < arrayOfIdeas.length; i++) {
     ideaboxSection.innerHTML += `
     <div class="ideabox-container" id="${arrayOfIdeas[i].id}">
       <div class="ideabox-header">
-        <div class="ideabox-header-image"><img class="star-btn" src="${whichStar()}" alt="star to favorite"></div>
+        <div class="ideabox-header-image"><img class="star-btn" src="assets/star.svg" alt="star to favorite"></div>
         <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
       </div>
       <div class="ideabox-body">
@@ -203,12 +90,11 @@ function addIdea() {
   render(ideas);
   userTitleInput.value = "";
   userBodyInput.value = "";
+  disableSaveButton();
 }
 
 function renderFavorites() {
   render(favorites);
-// look at favs array, hide any elements not in favs array
-// loop thru ideabox containers, if not in
 }
 
 function updateStarDisplay() {
@@ -278,22 +164,67 @@ function deleteCard() {
   }
 }
 
-//a function that decides whether to invoke render favs or All and toggles button
-//updating DOM
-function toggleStarredButton() {
-  if (event.target.innerHTML === 'Show Starred Ideas') {
-    event.target.innerHTML = 'Show All Ideas';
-  } else {
-    event.target.innerHTML = 'Show Starred Ideas';
-  }
-}
+// function filterSearch() {
+//   var userSearch = searchBar.value.toLowerCase();
+//   var searchList = [];
+//   for (var i = 0; i < ideas.length; i++) {
+//     var lowerCaseTitle = ideas[i].title.toLowerCase();
+//     var lowerCaseBody = ideas[i].body.toLowerCase();
+//     if (lowerCaseTitle.indexOf(userSearch) > -1 || lowerCaseBody.indexOf(userSearch) > -1) {
+//       searchList.push(ideas[i]);
+//     }
+//     }
+//     // section.innerHTML = '';
+//     // section.innerHTML += searchList, hide the others; (a loop to render through an array)
+//     // want to display searchList, and hide the other DOM elements
+//   }
+// }
 
-function displayAllOrFavorites() {
-  if (event.target.innerHTML === 'Show Starred Ideas') {
-    toggleStarredButton();
-    renderFavorites();
-  } else if (event.target.innerHTML === 'Show All Ideas') {
-    toggleStarredButton();
-    render(ideas);
-  }
-}
+/************/
+
+// grab the inner text of the different ideas currently in the ideas
+// data set array, and force them to lower case
+// loop through the ideas array, grabbing ideas[i].title & ideas[i].body
+
+// affect the current display/DOM (we'd either have to use section.innerHTML = '';
+// or we could use one of the other functions we've created)
+// responding to input, the loop keep running, the event would work
+// does the user input match the title/body
+// var title = ideas[i].title & var body = ideas[i].body (?)
+// still have an array with objects, but only objects that match the
+// search criteria
+
+
+//REFACTOR AREA:
+
+// function whichStar() {
+//   var starImg = event.target.closest(".star-btn");
+//   for (var i = 0; i < ideas.length; i++) {
+//     console.log(ideas[i].star)
+//     if (ideas[i].star) {
+//       starImg.src = "assets/star-active.svg"
+//       console.log("I found favorited ideas!")
+//     } else if (!ideas[i].star) {
+//       starImg.src = "assets/star.svg"
+//       console.log("I found non-favorited ideas")
+//     }
+//   }
+//   return starImg
+// }
+// function toggleStarredButton() {
+//   if (event.target.innerHTML === 'Show Starred Ideas') {
+//     event.target.innerHTML = 'Show All Ideas';
+//   } else {
+//     event.target.innerHTML = 'Show Starred Ideas';
+//   }
+// }
+
+// function displayAllOrFavorites() {
+//   if (event.target.innerHTML === 'Show Starred Ideas') {
+//     toggleStarredButton();
+//     renderFavorites();
+//   } else if (event.target.innerHTML === 'Show All Ideas') {
+//     toggleStarredButton();
+//     render(ideas);
+//   }
+// }
