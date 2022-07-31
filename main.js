@@ -19,7 +19,6 @@ formContainer.addEventListener('input', function() {
   disableSaveButton();
 })
 ideaboxSection.addEventListener('click', deleteCard)
-
 ideaboxSection.addEventListener('click', updateStarDisplay)
 showStarredButton.addEventListener('click', displayAllOrFavorites)
 
@@ -153,12 +152,16 @@ function filterSearch() {
 //     var lowerCaseBody = ideas[i].body.toLowerCase();
 //     if (lowerCaseTitle.indexOf(userSearch) > -1 || lowerCaseBody.indexOf(userSearch) > -1) {
 //       searchList.push(ideas[i]);
+//       console.log(searchList);
+//       render(searchList);
 //     }
-//     }
+//     else if (lowerCaseTitle.indexOf(userSearch) === -1 || lowerCaseBody.indexOf(userSearch) === -1)
+//     searchList.splice(i, 1);
+//     console.log(searchList);
+//   }
 //     // section.innerHTML = '';
 //     // section.innerHTML += searchList, hide the others; (a loop to render through an array)
 //     // want to display searchList, and hide the other DOM elements
-//   }
 // }
 
 /************/
