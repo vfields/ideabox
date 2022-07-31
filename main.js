@@ -21,30 +21,30 @@ formContainer.addEventListener('input', function() {
 // saveButton.addEventListener('click', clearInput);
 ideaboxSection.addEventListener('click', deleteCard)
 ideaboxSection.addEventListener('click', updateStarDisplay)
-showStarredButton.addEventListener('click', displayFavorites)
+showStarredButton.addEventListener('click', displayAllOrFavorites)
 searchBar.addEventListener('input', filterSearch)
 
 //EVENT HANDLERS
-function displayFavorites() {
-  var currentIdeaCards = Array.from(document.querySelectorAll(".ideabox-container"));
-
-  if (event.target.innerHTML === 'Show Starred Ideas') {
-    event.target.innerHTML = 'Show All Ideas';
-    for (var i = 0; i < currentIdeaCards.length; i++) {
-      if (!currentIdeaCards[i].classList.contains("favorite"))  {
-        currentIdeaCards[i].closest('.ideabox-container').classList.add("hidden");
-      }
-    }
-  }
-  else if(event.target.innerHTML === 'Show All Ideas') {
-    event.target.innerHTML = 'Show Starred Ideas';
-    for (var i = 0; i < currentIdeaCards.length; i++) {
-      if (currentIdeaCards[i].classList.contains("ideabox-container"))  {
-        currentIdeaCards[i].closest('.ideabox-container').classList.remove("hidden");
-      }
-    }
-  }
-}
+// function displayFavorites() {
+//   var currentIdeaCards = Array.from(document.querySelectorAll(".ideabox-container"));
+//
+//   if (event.target.innerHTML === 'Show Starred Ideas') {
+//     event.target.innerHTML = 'Show All Ideas';
+//     for (var i = 0; i < currentIdeaCards.length; i++) {
+//       if (!currentIdeaCards[i].classList.contains("favorite"))  {
+//         currentIdeaCards[i].closest('.ideabox-container').classList.add("hidden");
+//       }
+//     }
+//   }
+//   else if(event.target.innerHTML === 'Show All Ideas') {
+//     event.target.innerHTML = 'Show Starred Ideas';
+//     for (var i = 0; i < currentIdeaCards.length; i++) {
+//       if (currentIdeaCards[i].classList.contains("ideabox-container"))  {
+//         currentIdeaCards[i].closest('.ideabox-container').classList.remove("hidden");
+//       }
+//     }
+//   }
+// }
 
 function filterSearch() {
   var userSearch = searchBar.value.toLowerCase();
@@ -62,25 +62,45 @@ function filterSearch() {
     }
   }
 }
+
 function render(arrayOfIdeas) {
   ideaboxSection.innerHTML = ""
   for (var i = 0; i < arrayOfIdeas.length; i++) {
-    ideaboxSection.innerHTML += `
-    <div class="ideabox-container" id="${arrayOfIdeas[i].id}">
-      <div class="ideabox-header">
-        <div class="ideabox-header-image"><img class="star-btn" src="assets/star.svg" alt="star to favorite"></div>
-        <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
+    if (!arrayOfIdeas[i].star) {
+      ideaboxSection.innerHTML += `
+      <div class="ideabox-container" id="${arrayOfIdeas[i].id}">
+        <div class="ideabox-header">
+          <div class="ideabox-header-image"><img class="star-btn" src="assets/star.svg" alt="star to favorite"></div>
+          <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
+        </div>
+        <div class="ideabox-body">
+          <h3>${arrayOfIdeas[i].title}</h3>
+          <p class="ideabox-body-text">${arrayOfIdeas[i].body}</p>
+        </div>
+        <div class="ideabox-footer">
+          <div class="ideabox-footer-image"><img src="assets/comment.svg"></div>
+          <div class="ideabox-comment"><p>Comment</p></div>
+        </div>
       </div>
-      <div class="ideabox-body">
-        <h3>${arrayOfIdeas[i].title}</h3>
-        <p class="ideabox-body-text">${arrayOfIdeas[i].body}</p>
+      `
+    } else {
+      ideaboxSection.innerHTML += `
+      <div class="ideabox-container" id="${arrayOfIdeas[i].id}">
+        <div class="ideabox-header">
+          <div class="ideabox-header-image"><img class="star-btn" src="assets/star-active.svg" alt="star to favorite"></div>
+          <div class="ideabox-header-image"><img class="delete-btn" src="assets/delete.svg" alt="x to delete"></div>
+        </div>
+        <div class="ideabox-body">
+          <h3>${arrayOfIdeas[i].title}</h3>
+          <p class="ideabox-body-text">${arrayOfIdeas[i].body}</p>
+        </div>
+        <div class="ideabox-footer">
+          <div class="ideabox-footer-image"><img src="assets/comment.svg"></div>
+          <div class="ideabox-comment"><p>Comment</p></div>
+        </div>
       </div>
-      <div class="ideabox-footer">
-        <div class="ideabox-footer-image"><img src="assets/comment.svg"></div>
-        <div class="ideabox-comment"><p>Comment</p></div>
-      </div>
-    </div>
-    `
+      `
+    }
   }
 }
 
@@ -198,33 +218,32 @@ function deleteCard() {
 //REFACTOR AREA:
 
 // function whichStar() {
-//   var starImg = event.target.closest(".star-btn");
 //   for (var i = 0; i < ideas.length; i++) {
-//     console.log(ideas[i].star)
+//     var id = ideas[i].id;
 //     if (ideas[i].star) {
-//       starImg.src = "assets/star-active.svg"
+//       document.getElementById(`img${id}`).src = "assets/star-active.svg"
 //       console.log("I found favorited ideas!")
 //     } else if (!ideas[i].star) {
-//       starImg.src = "assets/star.svg"
+//       document.getElementById(`img${id}`).src = "assets/star.svg"
 //       console.log("I found non-favorited ideas")
 //     }
 //   }
 //   return starImg
 // }
-// function toggleStarredButton() {
-//   if (event.target.innerHTML === 'Show Starred Ideas') {
-//     event.target.innerHTML = 'Show All Ideas';
-//   } else {
-//     event.target.innerHTML = 'Show Starred Ideas';
-//   }
-// }
+function toggleStarredButton() {
+  if (event.target.innerHTML === 'Show Starred Ideas') {
+    event.target.innerHTML = 'Show All Ideas';
+  } else {
+    event.target.innerHTML = 'Show Starred Ideas';
+  }
+}
 
-// function displayAllOrFavorites() {
-//   if (event.target.innerHTML === 'Show Starred Ideas') {
-//     toggleStarredButton();
-//     renderFavorites();
-//   } else if (event.target.innerHTML === 'Show All Ideas') {
-//     toggleStarredButton();
-//     render(ideas);
-//   }
-// }
+function displayAllOrFavorites() {
+  if (event.target.innerHTML === 'Show Starred Ideas') {
+    toggleStarredButton();
+    renderFavorites();
+  } else if (event.target.innerHTML === 'Show All Ideas') {
+    toggleStarredButton();
+    render(ideas);
+  }
+}
