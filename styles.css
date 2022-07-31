@@ -98,6 +98,7 @@ input, textarea {
 label {
   font-size: 14px;
   font-weight: bold;
+  display: block;
 }
 
 #title-input {
