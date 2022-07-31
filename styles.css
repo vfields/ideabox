@@ -30,7 +30,7 @@ input, textarea {
 
 /* sidebar navigation */
 
-.sideNav {
+.side-nav {
   background-color: #1F1F3D;
   height: 100vh;
   width: 250px;
@@ -41,12 +41,12 @@ input, textarea {
   display: flex column;
 }
 
-.navHeader {
+.nav-header {
   color: #E9E9F3;
   margin-left: 15px;
 }
 
-.filterStarred {
+.filter-starred-container {
   border: 1px #353567;
   border-style: solid none;
   color: #BFBFDD;
@@ -56,7 +56,7 @@ input, textarea {
   padding-top: 10px;
 }
 
-.showStarredButton {
+.show-starred-btn {
   background-color: #5354A4;
   border: 1px solid #353567;
   color: #E9E9F3;
@@ -114,7 +114,7 @@ label {
   margin-bottom: 20px;
 }
 
-.saveButton {
+.save-btn {
   background-color: #1F1F3D;
   border: 2px solid #353567;
   color: #E9E9F3;
@@ -124,7 +124,7 @@ label {
   margin-bottom: 25px;
 }
 
-.saveButton:disabled {
+.save-btn:disabled {
     background-color: #4c4c61;
     border: 2px solid #616178;
     color: gray;
@@ -134,7 +134,7 @@ label {
     margin-bottom: 25px;
 }
 
-.saveButton:disabled:hover {
+.save-btn:disabled:hover {
   cursor: not-allowed;
 }
 

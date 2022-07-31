@@ -3,11 +3,11 @@ var ideas = []
 var favorites = []
 
 //QUERY SELECTORS:
-var saveButton = document.querySelector(".saveButton")
+var saveButton = document.querySelector(".save-btn")
 var userTitleInput = document.querySelector("#title-input")
 var userBodyInput = document.querySelector("#body-input")
 var ideaboxSection = document.querySelector(".ideabox-section")
-var showStarredButton = document.querySelector(".showStarredButton")
+var showStarredButton = document.querySelector(".show-starred-btn")
 var formContainer = document.querySelector(".form-container")
 var searchBar = document.querySelector("#search-ideas");
 
