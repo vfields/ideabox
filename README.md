@@ -6,6 +6,7 @@ Ideabox is an application that not only easily stores your ideas for you, but al
 ## Deploy Link: https://vfields.github.io/ideabox/
 
 ## Preview of App:
+![Application Screenshot](<img width="500" alt="Ideabox Screenshot" src="https://user-images.githubusercontent.com/105533317/182252301-0ceba5e2-3778-4d94-bed4-338cfa37db3a.png">)
 
 ## Context:
 Ideabox was our first __group__ project at Turing, completed during Week 4 of Mod 1 (which means we have been devs for just under four weeks!).
