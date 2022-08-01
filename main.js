@@ -9,9 +9,9 @@ var userBodyInput = document.querySelector("#body-input")
 var ideaboxSection = document.querySelector(".ideabox-section")
 var showStarredButton = document.querySelector(".show-starred-btn")
 var formContainer = document.querySelector(".form-container")
-var searchBar = document.querySelector("#search-ideas");
+var searchBar = document.querySelector("#search-ideas")
 
-//EVENT LISTENERS
+//EVENT LISTENERS:
 saveButton.addEventListener('click', addIdea)
 formContainer.addEventListener('input', function() {
   enableSaveButton();
@@ -22,7 +22,7 @@ ideaboxSection.addEventListener('click', updateStarDisplay)
 showStarredButton.addEventListener('click', displayAllOrFavorites)
 searchBar.addEventListener('input', filterSearch)
 
-//EVENT HANDLERS
+//EVENT HANDLERS:
 function addIdea() {
   var newIdea = new Idea(userTitleInput.value, userBodyInput.value);
   ideas.push(newIdea);
@@ -163,41 +163,16 @@ function toggleStarredButton() {
   }
 }
 
-/******** REFACTORING ***********/
-
 function filterSearch() {
   var userSearch = searchBar.value.toLowerCase();
   var currentIdeas = Array.from(document.querySelectorAll(".ideabox-body"));
-  // console.log(currentIdeas);
   for (var i = 0; i < currentIdeas.length; i++) {
     var innerText = currentIdeas[i].innerText.toLowerCase();
     if (innerText.indexOf(userSearch) === -1) {
-      // console.log("This does not match, no");
       currentIdeas[i].closest('.ideabox-container').classList.add("hidden");
     }
     else if (innerText.indexOf(userSearch) > -1) {
-      // console.log("This does match, yes");
       currentIdeas[i].closest('.ideabox-container').classList.remove("hidden");
     }
   }
 }
-
-// function filterSearch() {
-//   var userSearch = searchBar.value.toLowerCase();
-//   var searchList = [];
-//   for (var i = 0; i < ideas.length; i++) {
-//     var lowerCaseTitle = ideas[i].title.toLowerCase();
-//     var lowerCaseBody = ideas[i].body.toLowerCase();
-//     if (lowerCaseTitle.indexOf(userSearch) > -1 || lowerCaseBody.indexOf(userSearch) > -1) {
-//       searchList.push(ideas[i]);
-//       console.log(searchList);
-//       render(searchList);
-//     }
-//     else if (lowerCaseTitle.indexOf(userSearch) === -1 || lowerCaseBody.indexOf(userSearch) === -1)
-//     searchList.splice(i, 1);
-//     console.log(searchList);
-//   }
-//     // section.innerHTML = '';
-//     // section.innerHTML += searchList, hide the others; (a loop to render through an array)
-//     // want to display searchList, and hide the other DOM elements
-// }
