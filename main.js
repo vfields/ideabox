@@ -38,6 +38,7 @@ function searchIdea() {
 }
 
 function deleteIdea() {
+    event.preventDefault()
     if (ideas.contains(idea)) {
     ideas.pop(idea)
     displayIdeas()
@@ -54,12 +55,14 @@ function displayIdeas() {
 }
 
 function updateStarStatus() {
+  event.preventDefault()
   idea.updateIdea()
   starHeader.classList.toggleAttribute('hidden')
   displayIdeas()
-  if (idea.star) {
+  clearInput()
+  if (ideas[i].star) {
   ideaFavorites.push(idea)
-} else if (!idea.star) {
+} else if (!ideas[i].star) {
     ideaFavorites.pop(idea)
   }
 }
@@ -67,8 +70,8 @@ function updateStarStatus() {
 function clearInput() {
   title.innerText= '';
   body.innerText = '';
-  star.src = ''
 }
+
 
 //////CHANGE HTML TO LOOK LIKE BELOW
 // <div class="ideabox-header-image"><img class="star-btn white-star" src="assets/star.svg" alt="white star visible"></div>
