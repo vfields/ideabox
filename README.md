@@ -13,12 +13,17 @@ Ideabox was our first __group__ project at Turing, completed during Week 4 of Mo
 
 ## Contributors: (with LinkedIn & GitHub links)
 Tori Fields
+
 * LinkedIn: https://www.linkedin.com/in/victoria-ashley-fields/
 * GitHub: https://github.com/vfields
-Lauren Black
+
+Lauren Black    
+
 * LinkedIn: https://www.linkedin.com/in/laurenblack5280/
 * GitHub: https://github.com/laurenblack5280
-Alycia Canavan:
+
+Alycia Canavan
+
 * LinkedIn: https://www.linkedin.com/in/alycia-canavan/
 * GitHub: https://github.com/alyciacan
 
