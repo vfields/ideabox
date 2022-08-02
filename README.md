@@ -3,7 +3,8 @@
 ## Abstract:
 Ideabox is an application that not only easily stores your ideas for you, but also allows you to sort through them either via your favorites, or a word you remember writing in the idea’s title or body! Next time you have an exciting thought or brainstorm you don’t want to forget, jot it down in Ideabox, wherever you are, and come back to it whenever you want!
 
-## Deploy Link: https://vfields.github.io/ideabox/
+## Deploy Link: 
+[Ideabox](https://vfields.github.io/ideabox/)
 
 ## Preview of App:
 ![alt text](https://user-images.githubusercontent.com/105533317/182252301-0ceba5e2-3778-4d94-bed4-338cfa37db3a.png "Ideabox Screenshot")
